@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, abort, Response
-import urllib, json
+import urllib, json, constants
 
 app = Flask(__name__)
 
@@ -11,7 +11,7 @@ def getWeather():
     
     data = {}
     data['q'] = request.args.get('city')
-    data['appid'] = '70d4fb5fc92bbe440ebb79dfb20c2f82'
+    data['appid'] = constants.api_key
     data['units'] = 'metric'
 
     url_values = urllib.parse.urlencode(data)
