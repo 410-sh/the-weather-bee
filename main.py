@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route("/forecast", methods=['GET'])
 def getWeather():
     city = request.args.get('city')
-    if city is None:
+    if not city:
         abort(400, "No city provided")
     
     data = {}
