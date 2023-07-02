@@ -23,6 +23,10 @@
                 flex-direction: row;
                 align-items: center;
             }
+
+	    img {
+		max-width: 7%;
+	    }
         </style>
     </head>
     <body>
@@ -39,7 +43,7 @@
                     <td>{{ item["dt_txt"] }}</td>
                     <td>{{ item["main"]["temp"] }}°C</td>
                     <td>{{ item["main"]["humidity"] }}%</td>
-                    <td><div id="weather"><img src="/static/icons/{{ item["weather"][0]["icon"] }}.png"></img> {{ item["weather"][0]["main"] }}</div></td>
+                    <td><div id="weather"><img src="/static/images/{{ item["weather"][0]["icon"] }}.png"></img> {{ item["weather"][0]["main"] }}</div></td>
                     <td>{{ '%.2f' % (item["wind"]["speed"]*3.6) }} km/h ({{ item["wind"]["deg"] }} deg)</td>
                 </tr>
             {% endfor %}

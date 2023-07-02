@@ -12,7 +12,7 @@ def getWeather():
     data = {}
     data['q'] = request.args.get('city')
     data['appid'] = constants.api_key
-    data['units'] = 'metric'
+    data['units'] = 'imperial'
 
     url_values = urllib.parse.urlencode(data)
     url = 'http://api.openweathermap.org/data/2.5/forecast'
