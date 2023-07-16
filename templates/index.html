@@ -57,7 +57,6 @@
 		        <td><div id="weather"><img src="/static/images/rain.png"></img> {{ item["weather"][0]["main"] }}</div></td>
 
 		    {% endif %}
-		    <!--<td><div id="weather"> {{ item["weather"][0]["main"] }}</div></td>-->
 		    <td>{{ '%.2f' % (item["wind"]["speed"]*3.6) }} km/h ({{ item["wind"]["deg"] }} deg)</td>
                 </tr>
             {% endfor %}
