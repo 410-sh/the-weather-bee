@@ -1,7 +1,10 @@
-<html>
+<!DOCTYPE html>
     <head>
         <title>{{ title }}</title>
         <style>
+			body {
+				background-color: #D6D6D6
+			}
             table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
@@ -12,6 +15,7 @@
             border: 1px solid #dddddd;
             text-align: left;
             padding: 8px;
+		width: 22%;
             }
 
             tr:nth-child(even) {
@@ -25,17 +29,22 @@
             }
 
 	    img {
-		max-width: 7%;
+		max-width: 65%;
 	    }
 
-	    .beepic {
-		    align:center;
-	    }
+	    .beepic, .heading {
+		display: block;
+  		margin-left: auto;
+  		margin-right: auto;
+  		width: 50%;
+		max-width: 15%;
+		text-align: center;
+	    	}
         </style>
     </head>
     <body>
-	    <h3>The Weather Bee</h3>
-	    <img class=beepic src='static/images/weather bee.png'>
+    <h1 class="heading">The Weather Bee</h1>
+<img src="../static/images/weatherbee.png" alt="weather bee image" width="24%" class="beepic">
         <table>
             <tr>
                 <th>Time</th>
@@ -43,23 +52,23 @@
                 <th>Humidity</th>
                 <th>Weather</th>
                 <th>Wind</th>
-            </tr>
+          </tr>
             {% for item in data["list"] %}
                 <tr>
                     <td>{{ item["dt_txt"] }}</td>
                     <td>{{ item["main"]["temp"] }}°F</td>
                     <td>{{ item["main"]["humidity"] }}%</td>
 		    {% if item["weather"][0]["main"] == 'Clear': %}
-		        <td><div id="weather"><img src="/static/images/clear.png"></img> {{ item["weather"][0]["main"] }}</div></td>
+		        <td id="weather"><img src="/static/images/clear.png" alt="clear skies"> {{ item["weather"][0]["main"] }}</td>
 		    {% elif item["weather"][0]["main"] == 'Clouds':  %}
-		        <td><div id="weather"><img src="/static/images/cloudy.png"></img> {{ item["weather"][0]["main"] }}</div></td>
+		        <td id="weather"><img src="/static/images/cloudy.png" alt="cloudy weather"> {{ item["weather"][0]["main"] }}</td>
 		    {% elif item["weather"][0]['main'] == 'Rain': %}
-		        <td><div id="weather"><img src="/static/images/rain.png"></img> {{ item["weather"][0]["main"] }}</div></td>
+		        <td id="weather"><img src="/static/images/rain.png" alt="rainy weather"> {{ item["weather"][0]["main"] }}</td>
 
 		    {% endif %}
-		    <td>{{ '%.2f' % (item["wind"]["speed"]*3.6) }} mph</td>
+		    <td>{{ '%.0f' % (item["wind"]["speed"]*3.6) }} mph</td>
                 </tr>
             {% endfor %}
-        </table>
+    </table>
     </body>
 </html>
