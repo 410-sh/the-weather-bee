@@ -1,9 +1,24 @@
-from flask import Flask, render_template, request, abort, Response
+from flask import Flask, render_template, request, abort, Response, redirect, url_for
 import urllib, json, constants
 
 app = Flask(__name__)
 
-@app.route("/forecast", methods=['GET'])
+@app.route("/", methods=['GET','POST'])
+def homepage():
+    if request.method == "POST":
+        city = request.form.get('city')
+        if not city:
+            return "Please provide a city"
+        return redirect(url_for('getWeather', city=city))
+    return """ 
+    <form method="POST">
+        <label for="city">Enter a city:</label>
+        <input type="text" id="city" name="city">
+        <button type="submit">Get Weather</button>
+    </form>
+    """
+
+@app.route("/forecast", methods=['GET','POST'])
 def getWeather():
     city = request.args.get('city')
     if not city:

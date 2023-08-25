@@ -45,7 +45,13 @@
     <body>
     <h1 class="heading">The Weather Bee</h1>
 <img src="../static/images/weatherbee.png" alt="weather bee image" width="24%" class="beepic">
-        <table>
+<h2>Location Search</h2>
+<form method="POST">
+	<label for="location">Enter a location:</label>
+	<input type="text" id="location" required>
+	<button type="submit">Search</button>
+</form>
+	<table>
             <tr>
                 <th>Time</th>
                 <th>Temperature</th>
